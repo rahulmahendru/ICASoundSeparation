@@ -47,3 +47,36 @@ def whiten_matrix(d):
     # print(np.dot(whiteMatrix, whiteMatrix.T)/d.shape[1])
 
     return whiteMatrix
+
+def g(u):
+    return np.tanh(u)
+
+def gd(u):
+    return 1 - (g(u) ** 2)
+
+def obj(w, x):
+    first_term = (x * g(np.dot(w.T, x)).T).mean()
+    second_term = gd(np.dot(w.t, x)).mean * w
+
+    temp = first_term - second_term
+    temp /= np.sqrt((temp ** 2).sum())
+
+    return temp
+    
+
+def fastica(X, Y, tolerance):
+
+    # Initialize FastICA variables
+    
+    n = X.shape[0]                          # Calculate number of components
+    m = X.shape[1]                          # Calculate the size of each component
+    w = np.zeros((n, n), dtype=X.dtype)     # Initialize the weights matrix w
+
+    dist = {i: [] for i in range(n)}        # distance dictionary to store lowest distance
+
+    for i in range(0, n):
+        wi = np.random.rand(n)              # Random vector of length n
+
+        while True:
+            temp = obj(wi, X)               # Calculate the objective function
+

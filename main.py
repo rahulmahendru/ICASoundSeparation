@@ -22,4 +22,12 @@ for f in files:
 d = np.vstack(signals)
 
 # Whiten the matrix using the formula E*D^(-1/2)*E^T*x
-wd = whiten_matrix(d)
+X = whiten_matrix(d)
+
+# Find individual components
+Y = []
+tolerance = 0.000001
+
+# Implement the FastICA algorithm
+fastica(X, Y, tolerance)
+    
