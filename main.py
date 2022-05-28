@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from util import *
 from scipy.io import wavfile as wf
+np.random.seed(0)
 
 # Source file paths
 path = './audio/'
@@ -29,8 +30,10 @@ X = whiten_matrix(d)
 tolerance = 0.000001
 iterations = 100
 
+# Calculate the FASTICA separation
 S = fastica(X, iterations, tolerance)
 
+# Write the predicted separated sounds
 wf.write('s1_predicted.wav', frq, S[0].astype(np.float32))
 wf.write('s2_predicted.wav', frq, S[1].astype(np.float32))
 wf.write('s3_predicted.wav', frq, S[2].astype(np.float32))

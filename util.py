@@ -11,6 +11,7 @@ def read_wav(file):
     times = np.linspace(0, n_samples/sample_freq, num=n_samples)
     return sample_freq, data, times
 
+
 def plot_wav(data, times, f):
     plt.figure(figsize=(15,5))
     plt.plot(times, data)
