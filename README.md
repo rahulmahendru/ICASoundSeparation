@@ -12,7 +12,7 @@ This folder contains the output graphs gathered after running the ICA and NMF al
 This folder contains the checkpoint matrices in .npy format which store the input and output matrices used to reach the given results. The d1 and d2 are input files for ICA and NMF respectively. The S and W are output files for ICA and NMF. The files ending with '_test' are the input and output files for the testing file.  
 
 ## Out folder
-This folder contains the output audio files contructed after running the algorithms. It also contains a text file containing the MSE scores gathered during the project.
+This folder contains the output audio files constructed after running the algorithms. It also contains a text file containing the MSE scores gathered during the project.
 
 ## main.py
 This is the python script for running the ICA and NMF algorithms on the instrumental audio data. It uses the audio files from the audio folder and outputs the graphs for the input and output sound signals and also the .wav files in the img and out folders respectively.
